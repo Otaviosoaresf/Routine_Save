@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+
+.botaoLimpaTarefas {
+    border: solid 1px var(--verde);
+    background-color: var(--bege);
+    color: var(--azul);
+    padding: 15px;
+    font-size: 25px;
+    font-weight: 700;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.botaoLimpaTarefas:hover {
+    color: var(--preto);
+    background-color: var(--verde);
+}

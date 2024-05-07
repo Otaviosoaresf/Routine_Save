@@ -1,0 +1,15 @@
+.campoData {
+    margin: 10px 0;
+}
+
+.campoData input {
+    margin-top: 5px;
+    width: 100%;
+    font-size: 20px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
+    border: none;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: var(--fonte);
+}

@@ -1,0 +1,22 @@
+.texto {
+    text-align: center;
+    font-weight: 700;
+    color: var(--azul);
+}
+
+.texto h1 {
+    font-size: 38px;
+    
+}
+
+.texto h2 {
+    margin: 10px 0;
+    font-size: 32px;
+    
+}
+
+.texto h3 {
+    margin: 0;
+    font-size: 20px;
+    text-align: left;
+}
