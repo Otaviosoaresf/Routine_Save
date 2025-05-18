@@ -5,28 +5,29 @@ import CampoData from '../CampoData';
 import CampoTexto from '../CampoTexto';
 import Titulo from '../Titulo';
 import styles from './FormularioCriaTarefa.module.css';
-import { v4 as uuidv4 }  from 'uuid';
+import api from "../../api/axios";
 
-function FormularioCriaTarefa({ aoCadastrar }) {
+function FormularioCriaTarefa({ carregarTarefas }) {
 
-    const [nomeTarefa, setNomeTarefa] = useState([])
-    const [descricao, setDescricao] = useState([])
-    const [data, setData] = useState([])
-    const id = uuidv4()
+    const [titulo, setTitulo] = useState("")
+    const [descricao, setDescricao] = useState("")
+    const [dataTarefa, setDataTarefa] = useState("")
     
 
-    const aoSubmeter = (evento) => {
+    const aoSubmeter = async (evento) => {
         evento.preventDefault()
-        aoCadastrar({
-            nomeTarefa,
-            descricao,
-            data,
-            id,
-        })
-        setNomeTarefa('')
-        setDescricao('')
-        setData('')
-    }
+        
+        try {
+            await api.post("/tarefas/criar", { titulo, descricao, dataTarefa})
+        
+            setTitulo('')
+            setDescricao('')
+            setDataTarefa('')
+            carregarTarefas();
+        } catch (erro) {
+        console.error(`Erro ao buscar tarefas: ${erro}`)
+        }
+    };
 
 
     return (
@@ -36,8 +37,8 @@ function FormularioCriaTarefa({ aoCadastrar }) {
                 <CampoTexto
                     label="Titulo da tarefa"
                     placeholder="Digite o titulo da tarefa..."
-                    valor={nomeTarefa}
-                    aoAlterado={valor => setNomeTarefa(valor)}
+                    valor={titulo}
+                    aoAlterado={valor => setTitulo(valor)}
                 />
                 <CampoAreaTexto
                     label="Descriçao da tarefa..."
@@ -47,8 +48,8 @@ function FormularioCriaTarefa({ aoCadastrar }) {
                 />
                 <CampoData
                     label="Data da tarefa"
-                    valor={data}
-                    aoAlterado={valor => setData(valor)}
+                    valor={dataTarefa}
+                    aoAlterado={valor => setDataTarefa(valor)}
                 />
                 <Botao
                     texto="Criar tarefa"

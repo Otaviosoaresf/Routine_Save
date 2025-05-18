@@ -12,11 +12,11 @@ function ExibeTarefas({ tarefas, deletar, tarefaConcluida }) {
             >
                 {tarefas.map((tarefa) => (
                     <Tarefa
-                        nomeTarefa={tarefa.nomeTarefa}
-                        data={tarefa.data}
+                        nomeTarefa={tarefa.titulo}
+                        data={tarefa.dataTarefa}
                         descricao={tarefa.descricao}
-                        id={tarefa.id}
-                        key={tarefa.id}
+                        id={tarefa._id}
+                        key={tarefa._id}
                         deletar={deletar}
                         tarefaConcluida={tarefaConcluida}
                     />

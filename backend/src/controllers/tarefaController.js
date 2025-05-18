@@ -2,8 +2,7 @@ const Tarefa = require("../models/Tarefa");
 
 const criaTarefa = async (req, res) => {
     const { titulo, descricao, dataTarefa } = req.body;
-    const [dia, mes, ano] = dataTarefa.split("/");
-    const dataConvertida = new Date(`${ano}-${mes}-${dia}`);
+    const dataConvertida = new Date(dataTarefa);
 
     try {
         const novaTarefa = await Tarefa.create({ 
